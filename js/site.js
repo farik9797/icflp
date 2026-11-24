@@ -4,6 +4,27 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
+  // Тема: тёмная по умолчанию (как в брендбуке), светлая по кнопке; выбор запоминаем
+  const rootEl = document.documentElement;
+  const themeBtns = $$("[data-theme-toggle]");
+  const metaTheme = $('meta[name="theme-color"]');
+  const syncThemeUi = () => {
+    const light = rootEl.getAttribute("data-theme") === "light";
+    themeBtns.forEach((b) => b.setAttribute("aria-label", light ? "Включить тёмную тему" : "Включить светлую тему"));
+    if (metaTheme) metaTheme.setAttribute("content", light ? "#f5f7fa" : "#0a1020");
+  };
+  syncThemeUi();
+  themeBtns.forEach((b) =>
+    b.addEventListener("click", () => {
+      const next = rootEl.getAttribute("data-theme") === "light" ? "dark" : "light";
+      rootEl.setAttribute("data-theme", next);
+      try {
+        localStorage.setItem("icflp-theme", next);
+      } catch (e) {}
+      syncThemeUi();
+    })
+  );
+
   // Шапка становится плотной, когда первый экран уходит вверх
   const header = $("[data-header]");
   const sentinel = $("[data-header-sentinel]");
@@ -76,6 +97,77 @@
     revealEls.forEach((el) => el.classList.add("is-in"));
   }
 
+  // Заголовки разделов: слова поднимаются из-под маски, когда заголовок входит в экран
+  const splitEls = $$("[data-split]");
+  if (!reduce && "IntersectionObserver" in window && splitEls.length) {
+    splitEls.forEach((el) => {
+      let wi = 0;
+      const walk = (node) => {
+        [...node.childNodes].forEach((n) => {
+          if (n.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            n.textContent.split(/([ \n\t]+)/).forEach((part) => {
+              if (!part) return;
+              if (/^[ \n\t]+$/.test(part)) {
+                frag.appendChild(document.createTextNode(" "));
+                return;
+              }
+              const w = document.createElement("span");
+              w.className = "sw";
+              const inner = document.createElement("span");
+              inner.className = "sw-i";
+              inner.style.setProperty("--wi", wi++);
+              inner.textContent = part;
+              w.appendChild(inner);
+              frag.appendChild(w);
+            });
+            n.replaceWith(frag);
+          } else if (n.nodeType === 1 && n.tagName !== "BR") {
+            walk(n);
+          }
+        });
+      };
+      walk(el);
+    });
+    const splitIo = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-split-in");
+            splitIo.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    splitEls.forEach((el) => splitIo.observe(el));
+  }
+
+  // Блик за курсором на плитках и «магнитные» главные кнопки (только мышь, без reduced motion)
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (finePointer && !reduce) {
+    $$(".spot").forEach((el) =>
+      el.addEventListener("pointermove", (e) => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", e.clientX - r.left + "px");
+        el.style.setProperty("--my", e.clientY - r.top + "px");
+      })
+    );
+    $$("[data-magnetic]").forEach((btn) => {
+      btn.addEventListener("pointermove", (e) => {
+        const r = btn.getBoundingClientRect();
+        const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+        const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+        btn.style.setProperty("--tx", (dx * 6).toFixed(2) + "px");
+        btn.style.setProperty("--ty", (dy * 4).toFixed(2) + "px");
+      });
+      btn.addEventListener("pointerleave", () => {
+        btn.style.setProperty("--tx", "0px");
+        btn.style.setProperty("--ty", "0px");
+      });
+    });
+  }
+
   // Этапы работы: активный этап по центру экрана, прогресс уходит 3D-весам
   const steps = $$("[data-step]");
   const stepsList = $("[data-steps]");
@@ -104,6 +196,14 @@
   window.addEventListener("load", () => {
     if (!stepsList || !stage || reduce || !window.gsap || !window.ScrollTrigger) return;
     window.gsap.registerPlugin(window.ScrollTrigger);
+    // Фоновые фото блоков медленно смещаются при прокрутке: даёт глубину без отвлечения от текста
+    $$("[data-parallax]").forEach((img) => {
+      window.gsap.fromTo(
+        img,
+        { yPercent: -5 },
+        { yPercent: 5, ease: "none", scrollTrigger: { trigger: img.closest("section"), start: "top bottom", end: "bottom top", scrub: true } }
+      );
+    });
     window.ScrollTrigger.create({
       trigger: steps[0],
       start: `center ${band + 10}%`,
@@ -114,9 +214,8 @@
     });
   });
 
-  // Форма заявки (в макете не отправляется, говорим об этом прямо)
-  const form = $("[data-form]");
-  if (form) {
+  // Формы заявки: в разделе «Контакты» и во всплывающем окне (в макете не отправляются, говорим об этом прямо)
+  $$("[data-form]").forEach((form) => {
     const status = $("[data-form-status]", form);
     const setErr = (el, msg) => {
       el.setAttribute("aria-invalid", msg ? "true" : "false");
@@ -149,6 +248,36 @@
       status.classList.remove("hidden");
       status.textContent =
         "Спасибо, " + name.value.trim() + ". Это макет сайта, заявка пока никуда не уходит: отправку подключим при переносе на WordPress. Срочный вопрос можно решить по телефону +998 (87) 300-10-20.";
+    });
+  });
+
+  // Всплывающее окно «Получить консультацию». Без JS или без <dialog> кнопки ведут к форме в «Контактах».
+  const dialog = $("#consult");
+  if (dialog && typeof dialog.showModal === "function") {
+    const dForm = $("[data-form]", dialog);
+    const dStatus = $("[data-form-status]", dForm);
+    const clearForm = () => {
+      dForm.reset();
+      $$("[aria-invalid]", dForm).forEach((el) => el.setAttribute("aria-invalid", "false"));
+      $$(".field-error", dForm).forEach((el) => (el.textContent = ""));
+      dStatus.classList.add("hidden");
+    };
+    const openDialog = (e) => {
+      e.preventDefault();
+      if (mnav && mnav.classList.contains("is-open")) setMenu(false);
+      if (!dStatus.classList.contains("hidden")) clearForm();
+      dialog.showModal();
+      document.documentElement.style.overflow = "hidden";
+      if (window.matchMedia("(pointer: fine)").matches) dForm.elements.name.focus();
+    };
+    $$("[data-consult]").forEach((a) => a.addEventListener("click", openDialog));
+    $("[data-consult-close]", dialog)?.addEventListener("click", () => dialog.close());
+    // клик по затемнению вокруг окна закрывает его
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+    dialog.addEventListener("close", () => {
+      document.documentElement.style.overflow = "";
     });
   }
 })();
