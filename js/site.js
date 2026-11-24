@@ -4,6 +4,27 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
+  // Прелоадер (только первый заход за сессию): ждём шрифты или полную загрузку, минимум 650 мс, максимум 2,2 с
+  const plRoot = document.documentElement;
+  if (plRoot.classList.contains("pl-on")) {
+    const t0 = performance.now();
+    let finished = false;
+    const done = () => {
+      if (finished) return;
+      finished = true;
+      setTimeout(() => {
+        plRoot.classList.add("pl-done");
+        try {
+          sessionStorage.setItem("icflp-pl", "1");
+        } catch (e) {}
+        setTimeout(() => plRoot.classList.remove("pl-on", "pl-done"), 650);
+      }, Math.max(0, 650 - (performance.now() - t0)));
+    };
+    (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(done);
+    window.addEventListener("load", done);
+    setTimeout(done, 2200);
+  }
+
   // Тексты, которые пишет скрипт, на языке страницы
   const L = {
     ru: {
