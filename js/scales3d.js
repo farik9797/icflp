@@ -44,7 +44,8 @@ async function boot() {
   pmrem.dispose();
 
   const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 60);
-  const lookAt = new THREE.Vector3(0, 1.58, 0);
+  // центр кадра: весы занимают по высоте 0…3,25 (подставка, колонна, стрелка)
+  const lookAt = new THREE.Vector3(0, 1.62, 0);
 
   // Свет: тёплый ключевой, как рассветное солнце в видео, и холодный контровой из ночного неба
   scene.add(new THREE.HemisphereLight(0xc4cee8, 0x0a1020, 0.35));
@@ -229,7 +230,7 @@ async function boot() {
     panR.rotation.z = swing;
     model.rotation.y = yaw + pointer.x * 0.14;
     model.rotation.x = pointer.y * 0.04;
-    camera.position.set(0, lookAt.y + dist * 0.12, dist);
+    camera.position.set(0, lookAt.y + dist * 0.07, dist);
     camera.lookAt(lookAt);
   }
 
@@ -241,7 +242,8 @@ async function boot() {
     camera.aspect = w / h;
     const vf = THREE.MathUtils.degToRad(camera.fov);
     const hf = 2 * Math.atan(Math.tan(vf / 2) * camera.aspect);
-    dist = Math.max(3.5 / 2 / Math.tan(vf / 2), 3.9 / 2 / Math.tan(hf / 2));
+    // с запасом: подставка и тень не должны упираться в нижний край на невысоких экранах
+    dist = Math.max(4.3 / 2 / Math.tan(vf / 2), 4.4 / 2 / Math.tan(hf / 2));
     camera.updateProjectionMatrix();
     dirty = true;
     if (!running) draw();
