@@ -4,13 +4,39 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
+  // Тексты, которые пишет скрипт, на языке страницы
+  const L = {
+    ru: {
+      toLight: "Включить светлую тему",
+      toDark: "Включить тёмную тему",
+      errName: "Укажите, как к вам обращаться",
+      errPhone: "Укажите номер полностью, вместе с кодом оператора",
+      sent: (n) => "Спасибо, " + n + ". Это макет сайта, заявка пока никуда не уходит: отправку подключим при переносе на WordPress. Срочный вопрос можно решить по телефону +998 (87) 300-10-20.",
+    },
+    uz: {
+      toLight: "Yorug‘ mavzuni yoqish",
+      toDark: "Qorong‘i mavzuni yoqish",
+      errName: "Ismingizni kiriting",
+      errPhone: "Raqamni operator kodi bilan to‘liq kiriting",
+      sent: (n) => "Rahmat, " + n + ". Bu saytning maketi, ariza hozircha hech qayerga yuborilmaydi: yuborishni WordPress’ga ko‘chirishda ulaymiz. Shoshilinch savol bo‘lsa, +998 (87) 300-10-20 raqamiga qo‘ng‘iroq qiling.",
+    },
+    en: {
+      toLight: "Switch to light theme",
+      toDark: "Switch to dark theme",
+      errName: "Please tell us your name",
+      errPhone: "Please enter the full number, including the operator code",
+      sent: (n) => "Thank you, " + n + ". This is a website mockup, so the request is not sent anywhere yet: we will connect sending when the site moves to WordPress. For an urgent question, call +998 (87) 300-10-20.",
+    },
+  }[(document.documentElement.lang || "ru").slice(0, 2)] || null;
+  const T = L || {};
+
   // Тема: тёмная по умолчанию (как в брендбуке), светлая по кнопке; выбор запоминаем
   const rootEl = document.documentElement;
   const themeBtns = $$("[data-theme-toggle]");
   const metaTheme = $('meta[name="theme-color"]');
   const syncThemeUi = () => {
     const light = rootEl.getAttribute("data-theme") === "light";
-    themeBtns.forEach((b) => b.setAttribute("aria-label", light ? "Включить тёмную тему" : "Включить светлую тему"));
+    themeBtns.forEach((b) => b.setAttribute("aria-label", light ? T.toDark : T.toLight));
     if (metaTheme) metaTheme.setAttribute("content", light ? "#f5f7fa" : "#0a1020");
   };
   syncThemeUi();
@@ -239,15 +265,14 @@
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const digits = phone.value.replace(/\D/g, "");
-      const okName = setErr(name, name.value.trim().length < 2 ? "Укажите, как к вам обращаться" : "");
-      const okPhone = setErr(phone, digits.length < 12 && digits.length !== 9 ? "Укажите номер полностью, вместе с кодом оператора" : "");
+      const okName = setErr(name, name.value.trim().length < 2 ? T.errName : "");
+      const okPhone = setErr(phone, digits.length < 12 && digits.length !== 9 ? T.errPhone : "");
       if (!okName || !okPhone) {
         form.querySelector('[aria-invalid="true"]').focus();
         return;
       }
       status.classList.remove("hidden");
-      status.textContent =
-        "Спасибо, " + name.value.trim() + ". Это макет сайта, заявка пока никуда не уходит: отправку подключим при переносе на WordPress. Срочный вопрос можно решить по телефону +998 (87) 300-10-20.";
+      status.textContent = T.sent(name.value.trim());
     });
   });
 
