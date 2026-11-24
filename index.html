@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Golos+Text:wght@400;500;600&display=swap">
   <link rel="preload" as="image" href="media/hero-start.webp" fetchpriority="high">
-  <link rel="stylesheet" href="css/site.css?v=8">
+  <link rel="stylesheet" href="css/site.css?v=10">
   <script type="importmap">
   {
     "imports": {
@@ -181,7 +181,7 @@
 
     <!-- О компании -->
     <section id="about" class="relative isolate border-t border-line py-20 lg:py-28" aria-labelledby="about-title">
-      <div class="sec-media" aria-hidden="true"><img src="media/bg-about.webp" alt="" width="1600" height="1571" loading="lazy" decoding="async" class="object-[60%_45%]" data-parallax></div>
+      <div class="sec-media" aria-hidden="true"><img src="media/tashkent-about.webp" alt="" width="1376" height="768" loading="lazy" decoding="async" class="object-[72%_50%]" data-parallax></div>
       <div class="sec-scrim sec-scrim--about" aria-hidden="true"></div>
       <div class="container-x">
         <h2 id="about-title" data-split class="display max-w-[22ch] text-[34px] leading-[1.08] sm:text-[48px] lg:text-[60px]">Бьёмся за каждого клиента до&nbsp;победного конца</h2>
@@ -229,7 +229,7 @@
 
     <!-- Почему ICFLP -->
     <section id="why" class="relative isolate bg-ink-deep py-20 lg:py-28" aria-labelledby="why-title">
-      <div class="sec-media" aria-hidden="true"><img src="media/bg-why.webp" alt="" width="1600" height="1013" loading="lazy" decoding="async" class="object-[30%_50%]" data-parallax></div>
+      <div class="sec-media" aria-hidden="true"><img src="media/tashkent-why.webp" alt="" width="1376" height="768" loading="lazy" decoding="async" class="object-[25%_45%]" data-parallax></div>
       <div class="sec-scrim sec-scrim--why" aria-hidden="true"></div>
       <div class="container-x grid gap-12 lg:grid-cols-12 lg:gap-8">
         <div class="lg:col-span-5">
@@ -262,7 +262,7 @@
 
     <!-- Как мы работаем: 3D-весы выравниваются по ходу этапов -->
     <section id="process" class="relative isolate py-20 lg:py-28" aria-labelledby="process-title">
-      <div class="sec-media" aria-hidden="true"><img src="media/bg-process.webp" alt="" width="1600" height="902" loading="lazy" decoding="async" class="object-[50%_40%]" data-parallax></div>
+      <div class="sec-media sec-media--sticky" aria-hidden="true"><div class="sec-sticky"><img src="media/tashkent-night.webp" alt="" width="1376" height="768" loading="lazy" decoding="async" class="object-[50%_75%]" data-parallax></div></div>
       <div class="sec-scrim sec-scrim--process" aria-hidden="true"></div>
       <div class="container-x">
         <div class="max-w-[44rem]" data-reveal>
@@ -306,17 +306,17 @@
 
     <!-- География и заявка -->
     <section id="contact" class="relative isolate border-t border-line py-20 lg:py-28" aria-labelledby="contact-title">
-      <img src="media/contact-night.webp" alt="" width="1600" height="900" loading="lazy" decoding="async" class="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_50%] opacity-50">
-      <div class="sec-scrim sec-scrim--contact" aria-hidden="true"></div>
+      <div class="contact-sky" aria-hidden="true"><img src="media/tashkent-tower.webp" alt="" width="1376" height="768" loading="lazy" decoding="async" data-parallax></div>
 
-      <div class="container-x grid gap-14 lg:grid-cols-12 lg:gap-8">
+      <div class="container-x">
+        <div class="max-w-[34rem] lg:min-h-[280px]" data-reveal>
+          <h2 id="contact-title" data-split class="display text-[34px] leading-[1.1] sm:text-[44px] lg:text-[52px]">Работаем по всему Узбекистану</h2>
+          <p class="mt-5 max-w-[32rem] text-[17px] text-fg-2">Ведём дела в любой области республики. Если нужно, специалист выезжает на место.</p>
+        </div>
+
+        <div class="mt-12 grid gap-14 lg:mt-10 lg:grid-cols-12 lg:gap-8">
         <div class="lg:col-span-6">
-          <div data-reveal>
-            <h2 id="contact-title" data-split class="display text-[34px] leading-[1.1] sm:text-[44px] lg:text-[52px]">Работаем по всему Узбекистану</h2>
-            <p class="mt-5 max-w-[32rem] text-[17px] text-fg-2">Ведём дела в любой области республики. Если нужно, специалист выезжает на место.</p>
-          </div>
-
-          <div class="mt-10 grid gap-8 sm:grid-cols-2">
+          <div class="grid gap-8 sm:grid-cols-2">
             <div data-reveal style="--i:1">
               <h3 class="display text-[24px] leading-[1.2]">Иностранцам в Узбекистане</h3>
               <p class="mt-2 text-[15px] text-fg-2">Полное правовое сопровождение нерезидентов на территории республики.</p>
@@ -366,6 +366,7 @@
             <p class="mt-4 text-[13px] leading-[1.5] text-fg-3">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
             <div class="mt-5 hidden rounded-[6px] border border-brass/40 bg-raised p-4 text-[15px] text-fg-2" role="status" aria-live="polite" data-form-status></div>
           </form>
+        </div>
         </div>
       </div>
     </section>
