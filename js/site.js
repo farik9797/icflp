@@ -99,9 +99,53 @@
       const small = window.matchMedia("(max-width: 899px)").matches;
       video.src = small ? video.dataset.srcSm : video.dataset.srcLg;
       video.muted = true;
-      const p = video.play();
-      if (p && p.catch) p.catch(() => { video.poster = video.dataset.posterEnd; });
+      video.loop = true;
+      const play = () => {
+        const p = video.play();
+        if (p && p.catch) p.catch(() => { video.poster = video.dataset.posterEnd; });
+      };
+      play();
+      // петля «вперёд-назад» крутится только пока первый экран виден
+      const hero = video.closest("section");
+      if (hero && "IntersectionObserver" in window) {
+        new IntersectionObserver(([e]) => (e.isIntersecting ? play() : video.pause()), { threshold: 0.05 }).observe(hero);
+      }
     }
+  }
+
+  // Выпадающий переключатель языка
+  const dd = $("[data-lang-dd]");
+  if (dd) {
+    const btn = $("[data-lang-toggle]", dd);
+    const menu = $("#lang-menu", dd);
+    const setDd = (open) => {
+      menu.hidden = !open;
+      btn.setAttribute("aria-expanded", String(open));
+    };
+    btn.addEventListener("click", () => {
+      const open = menu.hidden;
+      setDd(open);
+      if (open) ($('[aria-current="page"]', menu) || $("a", menu)).focus();
+    });
+    document.addEventListener("click", (e) => {
+      if (!menu.hidden && !dd.contains(e.target)) setDd(false);
+    });
+    dd.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !menu.hidden) {
+        setDd(false);
+        btn.focus();
+      }
+      if ((e.key === "ArrowDown" || e.key === "ArrowUp") && !menu.hidden) {
+        e.preventDefault();
+        const items = $$("a", menu);
+        const i = items.indexOf(document.activeElement);
+        const next = e.key === "ArrowDown" ? (i + 1) % items.length : (i - 1 + items.length) % items.length;
+        items[next].focus();
+      }
+    });
+    dd.addEventListener("focusout", (e) => {
+      if (!dd.contains(e.relatedTarget)) setDd(false);
+    });
   }
 
   // Появление блоков при прокрутке
