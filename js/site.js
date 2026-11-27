@@ -42,7 +42,7 @@
       sending: "Отправляем…",
       sent: (n) => `Спасибо, ${n}. Заявка отправлена, юрист свяжется с вами в ближайшее время.`,
       netErr: "Не удалось отправить заявку: нет связи с сервером. Введённый текст сохранён, попробуйте ещё раз или позвоните +998 (87) 300-10-20.",
-      demo: "Это макет сайта: поля проверяются, но заявка пока никуда не уходит. Приём заявок подключим при переносе на WordPress. Срочный вопрос можно решить по телефону +998 (87) 300-10-20.",
+      demo: "Это макет сайта: поля проверяются, но заявка пока никуда не уходит. Приём заявок подключим при переносе на рабочий хостинг. Срочный вопрос можно решить по телефону +998 (87) 300-10-20.",
     },
     uz: {
       toLight: "Yorug‘ mavzuni yoqish",
@@ -52,7 +52,7 @@
       sending: "Yuborilmoqda…",
       sent: (n) => `Rahmat, ${n}. Ariza yuborildi, yurist tez orada siz bilan bog‘lanadi.`,
       netErr: "Arizani yuborib bo‘lmadi: server bilan aloqa yo‘q. Kiritilgan matn saqlandi, qayta urinib ko‘ring yoki +998 (87) 300-10-20 raqamiga qo‘ng‘iroq qiling.",
-      demo: "Bu saytning maketi: maydonlar tekshiriladi, lekin ariza hozircha hech qayerga yuborilmaydi. Arizalarni qabul qilishni WordPress’ga ko‘chirishda ulaymiz. Shoshilinch savol bo‘lsa, +998 (87) 300-10-20 raqamiga qo‘ng‘iroq qiling.",
+      demo: "Bu saytning maketi: maydonlar tekshiriladi, lekin ariza hozircha hech qayerga yuborilmaydi. Arizalarni qabul qilishni ishchi hostingga ko‘chirishda ulaymiz. Shoshilinch savol bo‘lsa, +998 (87) 300-10-20 raqamiga qo‘ng‘iroq qiling.",
     },
     en: {
       toLight: "Switch to light theme",
@@ -62,7 +62,7 @@
       sending: "Sending…",
       sent: (n) => `Thank you, ${n}. Your request has been sent, a lawyer will contact you shortly.`,
       netErr: "We could not send your request: no connection to the server. Your text is saved, please try again or call +998 (87) 300-10-20.",
-      demo: "This is a website mockup: the fields are checked, but the request is not sent anywhere yet. We will connect request handling when the site moves to WordPress. For an urgent question, call +998 (87) 300-10-20.",
+      demo: "This is a website mockup: the fields are checked, but the request is not sent anywhere yet. We will connect request handling when the site moves to production hosting. For an urgent question, call +998 (87) 300-10-20.",
     },
   }[lang] || {};
 
@@ -461,6 +461,18 @@
       root.style.overflow = "";
     });
   }
+
+  // Карта на «Контактах»: iframe Яндекса появляется только по нажатию
+  $$("[data-map]").forEach((box) =>
+    $("[data-map-load]", box)?.addEventListener("click", () => {
+      const frame = document.createElement("iframe");
+      frame.src = box.dataset.src;
+      frame.title = box.dataset.title || "";
+      frame.className = "block h-[360px] w-full border-0 sm:h-[440px]";
+      box.replaceWith(frame);
+      track("map_open");
+    })
+  );
 
   // Клики, которые считают счётчики: телефон, мессенджеры, карты, MaktabLaw
   document.addEventListener("click", (e) => {
