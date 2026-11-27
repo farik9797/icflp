@@ -6,7 +6,10 @@
 const stage = document.querySelector("[data-scales]");
 const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-if (stage) {
+// Слабое устройство или экономия трафика: вместо 3D статичное фото
+if (stage && document.documentElement.classList.contains("lite")) {
+  stage.classList.add("is-fallback");
+} else if (stage) {
   const io = new IntersectionObserver(
     (entries) => {
       if (entries.some((e) => e.isIntersecting)) {

@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Стайлгайд ICFLP: сетка, шрифты, цвета, элементы</title>
+  <meta name="description" content="Дизайн-система сайта ICFLP для согласования: сетка, типографика, цвета тёмной и светлой темы, кнопки, поля и состояния форм.">
+  <meta name="theme-color" content="#0a1020">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://farik9797.github.io/icflp/styleguide.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ICFLP">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://farik9797.github.io/icflp/styleguide.html">
+  <meta property="og:title" content="Стайлгайд ICFLP: сетка, шрифты, цвета, элементы">
+  <meta property="og:description" content="Дизайн-система сайта ICFLP для согласования: сетка, типографика, цвета тёмной и светлой темы, кнопки, поля и состояния форм.">
+  <meta property="og:image" content="https://farik9797.github.io/icflp/media/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- тема, облегчённый режим для слабых устройств и прелоадер (только первый заход за сессию) -->
+  <script>(function(){var d=document.documentElement,n=navigator;d.classList.add('js');var t=null;try{t=localStorage.getItem('icflp-theme')}catch(e){}d.setAttribute('data-theme',t==='light'?'light':'dark');var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,lite=rm||(n.connection&&n.connection.saveData)||(n.deviceMemory&&n.deviceMemory<=4);if(lite)d.classList.add('lite');var p=null;try{p=sessionStorage.getItem('icflp-pl')}catch(e){}if(!p&&!lite)d.classList.add('pl-on');if(t==='light'){var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute('content','#f7f6f2')}})()</script>
+  <link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="media/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="media/favicon-192.png">
+  <link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Golos+Text:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="css/site.css?v=84110e99">
+</head>
+<body class="min-h-screen">
+  <div class="preloader on-dark" data-preloader aria-hidden="true">
+    <img src="media/emblem.webp" alt="" width="160" height="160" class="preloader-emblem">
+  </div>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-[6px] focus:bg-brass focus:px-4 focus:py-3 focus:text-ink">Перейти к содержанию</a>
+  <!-- Шапка. Пункты меню: Практики (подменю), Компания (подменю), MaktabLaw, Публикации, Контакты -->
+  <header class="site-header fixed inset-x-0 top-0 z-40" data-header>
+    <div class="container-x flex h-16 items-center lg:h-[72px]">
+      <a href="./" class="brand flex shrink-0 items-center gap-3" aria-label="ICFLP, International Center for Legal Protection, на главную">
+        <img src="media/emblem.webp" alt="" width="240" height="240" class="h-10 w-10 lg:h-12 lg:w-12" fetchpriority="high">
+        <span class="brand-name">ICFLP</span>
+      </a>
+      <nav class="ml-auto hidden items-center gap-1 whitespace-nowrap xl:flex" aria-label="Основное меню">
+        <div class="relative" data-dd>
+          <button type="button" class="nav-link nav-dd-btn" aria-expanded="false" aria-controls="dd-practices" data-dd-btn >Практики<svg class="h-4 w-4" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="m6 9 6 6 6-6" /> </svg></button>
+          <div id="dd-practices" class="dd-menu dd-menu--wide" data-dd-menu hidden>
+            <ul>
+              <li><a class="dd-opt" href="debt-recovery.html"><span>Возврат задолженностей</span><span class="dd-note">Главная специализация</span></a></li>
+              <li><a class="dd-opt" href="citizens-rights.html"><span>Защита прав граждан</span></a></li>
+              <li><a class="dd-opt" href="criminal-defense.html"><span>Уголовная защита</span></a></li>
+              <li><a class="dd-opt" href="business-law.html"><span>Бизнес и корпоративное право</span></a></li>
+              <li><a class="dd-opt" href="international-law.html"><span>Международное право</span></a></li>
+            </ul>
+            <a class="dd-all" href="practices.html">Все практики<svg class="h-4 w-4" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a>
+          </div>
+        </div>
+        <div class="relative" data-dd>
+          <button type="button" class="nav-link nav-dd-btn" aria-expanded="false" aria-controls="dd-company" data-dd-btn >Компания<svg class="h-4 w-4" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="m6 9 6 6 6-6" /> </svg></button>
+          <div id="dd-company" class="dd-menu" data-dd-menu hidden>
+            <ul>
+              <li><a class="dd-opt" href="about.html"><span>О компании</span></a></li>
+              <li><a class="dd-opt" href="about.html#team"><span>Команда</span></a></li>
+              <li><a class="dd-opt" href="process.html"><span>Как мы работаем</span></a></li>
+            </ul>
+          </div>
+        </div>
+        <a class="nav-link" href="maktablaw.html" >MaktabLaw</a>
+        <a class="nav-link" href="publications.html" >Публикации</a>
+        <a class="nav-link" href="contacts.html" >Контакты</a>
+      </nav>
+      <div class="ml-auto flex items-center gap-2 sm:gap-3 xl:ml-6">
+        <a href="tel:+998873001020" class="icon-btn hidden sm:inline-flex" aria-label="Позвонить: +998 (87) 300-10-20" title="+998 (87) 300-10-20"><svg class="h-5 w-5" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /> </svg></a>
+        <button type="button" class="icon-btn" data-theme-toggle aria-label="Включить светлую тему"><span class="theme-ico-sun"><svg class="h-5 w-5" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /> </svg></span><span class="theme-ico-moon"><svg class="h-5 w-5" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /> </svg></span></button>
+        <div class="relative hidden md:block" data-dd>
+          <button type="button" class="lang-dd-btn" aria-expanded="false" aria-controls="lang-menu" data-dd-btn><span class="sr-only">Язык сайта: </span>RU<svg class="h-4 w-4" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="m6 9 6 6 6-6" /> </svg></button>
+          <ul id="lang-menu" class="dd-menu dd-menu--right" data-dd-menu hidden>
+            <li><a class="dd-opt dd-opt--row" href="./" hreflang="ru" lang="ru" aria-current="page">Русский<span class="lang-code">RU</span></a></li>
+            <li><a class="dd-opt dd-opt--row" href="uz/" hreflang="uz" lang="uz" >O‘zbekcha<span class="lang-code">UZ</span></a></li>
+            <li><a class="dd-opt dd-opt--row" href="en/" hreflang="en" lang="en" >English<span class="lang-code">EN</span></a></li>
+          </ul>
+        </div>
+        <a href="contacts.html#contact" class="btn btn-primary btn-sm ml-1 hidden whitespace-nowrap sm:inline-flex" data-consult aria-haspopup="dialog">Получить консультацию</a>
+        <button type="button" class="icon-btn -mr-2 h-11 w-11 xl:hidden" aria-label="Открыть меню" aria-expanded="false" aria-controls="mnav" data-menu-open><svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <line x1="4" x2="20" y1="12" y2="12" /> <line x1="4" x2="20" y1="6" y2="6" /> <line x1="4" x2="20" y1="18" y2="18" /> </svg></button>
+      </div>
+    </div>
+  </header>
+  <!-- Мобильное меню (до 1280 px): разделы с подменю раскрываются по месту -->
+  <div id="mnav" class="mnav fixed inset-0 z-50 flex flex-col overflow-y-auto bg-ink xl:hidden" role="dialog" aria-modal="true" aria-label="Меню" inert>
+    <div class="container-x flex h-16 shrink-0 items-center justify-between">
+      <span class="brand flex items-center gap-3"><img src="media/emblem.webp" alt="" width="240" height="240" class="h-10 w-10" loading="lazy"><span class="brand-name">ICFLP</span></span>
+      <button type="button" class="icon-btn -mr-2 h-11 w-11" aria-label="Закрыть меню" data-menu-close><svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M18 6 6 18" /> <path d="m6 6 12 12" /> </svg></button>
+    </div>
+    <nav class="container-x mt-4 flex flex-col" aria-label="Меню">
+      <a class="mnav-link" href="./" >Главная</a>
+      <div class="mnav-group">
+        <button type="button" class="mnav-link mnav-acc" aria-expanded="false" aria-controls="mnav-practices" data-acc >Практики<svg class="h-5 w-5" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="m6 9 6 6 6-6" /> </svg></button>
+        <ul id="mnav-practices" class="mnav-sub" hidden>
+          <li><a href="debt-recovery.html">Возврат задолженностей</a></li>
+          <li><a href="citizens-rights.html">Защита прав граждан</a></li>
+          <li><a href="criminal-defense.html">Уголовная защита</a></li>
+          <li><a href="business-law.html">Бизнес и корпоративное право</a></li>
+          <li><a href="international-law.html">Международное право</a></li>
+          <li><a class="mnav-sub-all" href="practices.html">Все практики<svg class="h-4 w-4" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></li>
+        </ul>
+      </div>
+      <div class="mnav-group">
+        <button type="button" class="mnav-link mnav-acc" aria-expanded="false" aria-controls="mnav-company" data-acc >Компания<svg class="h-5 w-5" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="m6 9 6 6 6-6" /> </svg></button>
+        <ul id="mnav-company" class="mnav-sub" hidden>
+          <li><a href="about.html">О компании</a></li>
+          <li><a href="about.html#team">Команда</a></li>
+          <li><a href="process.html">Как мы работаем</a></li>
+        </ul>
+      </div>
+      <a class="mnav-link" href="maktablaw.html" >MaktabLaw</a>
+      <a class="mnav-link" href="publications.html" >Публикации</a>
+      <a class="mnav-link" href="contacts.html" >Контакты</a>
+    </nav>
+    <div class="container-x mt-auto grid gap-3 pb-8 pt-8">
+      <a href="contacts.html#contact" class="btn btn-primary w-full" data-consult aria-haspopup="dialog">Получить консультацию</a>
+      <a href="tel:+998873001020" class="btn btn-ghost w-full tabular-nums"><svg class="" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /> </svg>+998 (87) 300-10-20</a>
+      <nav class="mt-3 grid grid-cols-3 gap-2" aria-label="Язык сайта">
+        <a class="lang-pill" href="./" hreflang="ru" lang="ru" aria-current="page">RU</a>
+        <a class="lang-pill" href="uz/" hreflang="uz" lang="uz" >UZ</a>
+        <a class="lang-pill" href="en/" hreflang="en" lang="en" >EN</a>
+      </nav>
+    </div>
+  </div>
+  <main id="main">
+    <section class="article-hero on-dark relative isolate overflow-hidden bg-ink-deep" aria-labelledby="page-title">
+      <div class="container-x pb-14 pt-32 lg:pb-16 lg:pt-40">
+        <p class="text-[14px] text-fg-3">Для согласования, закрыто от поиска</p>
+        <h1 id="page-title" class="display mt-4 text-[40px] leading-[1.06] sm:text-[52px] lg:text-[64px]">Стайлгайд ICFLP</h1>
+        <p class="mt-5 max-w-[42rem] text-[17px] text-fg-2">Сетка, шрифты, цвета обеих тем и состояния элементов. Всё, что на сайте, собрано из этих деталей.</p>
+      </div>
+    </section>
+    <section id="sg" class="py-16 lg:py-24" aria-labelledby="grid-title">
+      <div class="container-x">
+        <h2 id="grid-title" class="display text-[32px] leading-[1.1] sm:text-[42px]">Сетка</h2>
+        <p class="mt-3 max-w-[44rem] text-fg-2">12 колонок, ширина контейнера до 1280 px, поля 16 / 24 / 32 px на телефоне, планшете и компьютере. Отступы между блоками 80 и 112 px.</p>
+        <div class="sg-grid mt-8" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </section>
+    <section class="border-t border-line py-16 lg:py-24" aria-labelledby="themes-title">
+      <div class="container-x">
+        <h2 id="themes-title" class="display text-[32px] leading-[1.1] sm:text-[42px]">Тёмная и светлая тема</h2>
+        <p class="mt-3 max-w-[44rem] text-fg-2">Тёмная основная: глубокий синий фон, латунь только на главных кнопках и метках. Светлая спроектирована отдельно: тёплый светлый фон, тёмные заголовки, тёмно-синие главные кнопки.</p>
+        <div class="mt-10 grid gap-6 xl:grid-cols-2">
+          <div class="on-dark rounded-[16px] border border-line bg-ink p-6 sm:p-8">
+            <p class="mb-6 text-[15px] font-medium text-fg">Тёмная</p>
+          <h3 class="text-[13px] font-medium text-fg-3">Цвета</h3>
+          <div class="mt-4 grid gap-3 min-[400px]:grid-cols-2 sm:grid-cols-3">
+            <p class="sg-swatch"><i class="bg-ink"></i>Фон страницы</p>
+            <p class="sg-swatch"><i class="bg-ink-deep"></i>Глубокий фон</p>
+            <p class="sg-swatch"><i class="bg-surface"></i>Плитка, окно</p>
+            <p class="sg-swatch"><i class="bg-raised"></i>Поле, наведение</p>
+            <p class="sg-swatch"><i class="bg-fg"></i>Заголовки</p>
+            <p class="sg-swatch"><i class="bg-fg-2"></i>Текст</p>
+            <p class="sg-swatch"><i class="bg-fg-3"></i>Подписи</p>
+            <p class="sg-swatch"><i class="bg-brass"></i>Латунь</p>
+            <p class="sg-swatch"><i class="bg-ml"></i>MaktabLaw</p>
+          </div>
+          <h3 class="mt-10 text-[13px] font-medium text-fg-3">Типографика</h3>
+          <p class="display mt-4 text-[40px] leading-[1.04] sm:text-[52px]">Заголовок H1</p>
+          <p class="display mt-3 text-[40px] leading-[1.1]">Заголовок H2</p>
+          <p class="display mt-3 text-[28px] leading-[1.15]">Заголовок H3</p>
+          <p class="mt-3 text-[17px] text-fg-2">Основной текст 17 px, Golos Text. Строка не длиннее 70 знаков, межстрочный 1,6.</p>
+          <p class="mt-2 text-[14px] text-fg-3">Подпись 14 px</p>
+          <h3 class="mt-10 text-[13px] font-medium text-fg-3">Кнопки</h3>
+          <div class="mt-4 flex flex-wrap items-center gap-3">
+            <a class="btn btn-primary" href="#sg">Главная<svg class="" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a>
+            <a class="btn btn-ghost" href="#sg">Второстепенная</a>
+            <a class="btn btn-primary sg-focus" href="#sg">Фокус</a>
+            <span class="btn btn-primary" aria-busy="true">Отправляем…</span>
+            <span class="btn btn-ghost btn-soon" aria-disabled="true"><svg class="h-[18px] w-[18px]" aria-hidden="true" focusable="false" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Загрузить в App Store<span class="soon">Скоро</span></span>
+            <a class="btn btn-primary btn-sm" href="#sg">Маленькая</a>
+          </div>
+          <h3 class="mt-10 text-[13px] font-medium text-fg-3">Поля формы</h3>
+          <div class="mt-4 grid gap-5 sm:grid-cols-2">
+            <div><label class="field-label" for="sg-components-37-a">Обычное</label><input class="field" id="sg-components-37-a" placeholder="Имя"></div>
+            <div><label class="field-label" for="sg-components-37-b">С ошибкой</label><input class="field" id="sg-components-37-b" value="+998 90" aria-invalid="true" aria-describedby="sg-components-37-b-err"><p class="field-error" id="sg-components-37-b-err">Укажите номер полностью: для Узбекистана 9 цифр после +998</p></div>
+            <div><label class="field-label" for="sg-components-37-c">Заполнено верно</label><input class="field tabular-nums" id="sg-components-37-c" value="+998 90 123-45-67" data-valid="true"></div>
+            <div><label class="field-label" for="sg-components-37-d">С подсказкой</label><input class="field" id="sg-components-37-d" aria-describedby="sg-components-37-d-h"><p class="field-hint" id="sg-components-37-d-h">Номер Узбекистана или другой страны с кодом</p></div>
+          </div>
+          <div class="mt-5 grid gap-3">
+            <div class="form-status" data-state="ok">Спасибо, Алишер. Заявка отправлена, юрист свяжется с вами в ближайшее время.</div>
+            <div class="form-status" data-state="error">Не удалось отправить заявку: нет связи с сервером. Введённый текст сохранён, попробуйте ещё раз или позвоните +998 (87) 300-10-20.</div>
+            <div class="form-status" data-state="info">Это макет сайта: поля проверяются, но заявка пока никуда не уходит.</div>
+          </div>
+          <h3 class="mt-10 text-[13px] font-medium text-fg-3">Карточки и меню</h3>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <article class="tile relative p-6"><p class="text-[14px] text-fg-3">Практика</p><h4 class="display mt-2 text-[24px] leading-[1.2]"><a class="tile-link" href="#sg">Карточка-ссылка</a></h4><span class="tile-more mt-5">Подробнее<svg class="h-4 w-4" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></article>
+            <div class="dd-menu relative! top-0! left-0! min-w-0!"><ul><li><a class="dd-opt" href="#sg"><span>Возврат задолженностей</span><span class="dd-note">Главная специализация</span></a></li><li><a class="dd-opt" href="#sg"><span>Уголовная защита</span></a></li></ul><a class="dd-all" href="#sg">Все практики<svg class="h-4 w-4" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+          </div>
+          </div>
+          <div data-theme="light" class="rounded-[16px] border border-line bg-ink p-6 text-fg sm:p-8">
+            <p class="mb-6 text-[15px] font-medium text-fg">Светлая</p>
+          <h3 class="text-[13px] font-medium text-fg-3">Цвета</h3>
+          <div class="mt-4 grid gap-3 min-[400px]:grid-cols-2 sm:grid-cols-3">
+            <p class="sg-swatch"><i class="bg-ink"></i>Фон страницы</p>
+            <p class="sg-swatch"><i class="bg-ink-deep"></i>Глубокий фон</p>
+            <p class="sg-swatch"><i class="bg-surface"></i>Плитка, окно</p>
+            <p class="sg-swatch"><i class="bg-raised"></i>Поле, наведение</p>
+            <p class="sg-swatch"><i class="bg-fg"></i>Заголовки</p>
+            <p class="sg-swatch"><i class="bg-fg-2"></i>Текст</p>
+            <p class="sg-swatch"><i class="bg-fg-3"></i>Подписи</p>
+            <p class="sg-swatch"><i class="bg-brass"></i>Латунь</p>
+            <p class="sg-swatch"><i class="bg-ml"></i>MaktabLaw</p>
+          </div>
+          <h3 class="mt-10 text-[13px] font-medium text-fg-3">Типографика</h3>
+          <p class="display mt-4 text-[40px] leading-[1.04] sm:text-[52px]">Заголовок H1</p>
+          <p class="display mt-3 text-[40px] leading-[1.1]">Заголовок H2</p>
+          <p class="display mt-3 text-[28px] leading-[1.15]">Заголовок H3</p>
+          <p class="mt-3 text-[17px] text-fg-2">Основной текст 17 px, Golos Text. Строка не длиннее 70 знаков, межстрочный 1,6.</p>
+          <p class="mt-2 text-[14px] text-fg-3">Подпись 14 px</p>
+          <h3 class="mt-10 text-[13px] font-medium text-fg-3">Кнопки</h3>
+          <div class="mt-4 flex flex-wrap items-center gap-3">
+            <a class="btn btn-primary" href="#sg">Главная<svg class="" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a>
+            <a class="btn btn-ghost" href="#sg">Второстепенная</a>
+            <a class="btn btn-primary sg-focus" href="#sg">Фокус</a>
+            <span class="btn btn-primary" aria-busy="true">Отправляем…</span>
+            <span class="btn btn-ghost btn-soon" aria-disabled="true"><svg class="h-[18px] w-[18px]" aria-hidden="true" focusable="false" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Загрузить в App Store<span class="soon">Скоро</span></span>
+            <a class="btn btn-primary btn-sm" href="#sg">Маленькая</a>
+          </div>
+          <h3 class="mt-10 text-[13px] font-medium text-fg-3">Поля формы</h3>
+          <div class="mt-4 grid gap-5 sm:grid-cols-2">
+            <div><label class="field-label" for="sg-components-38-a">Обычное</label><input class="field" id="sg-components-38-a" placeholder="Имя"></div>
+            <div><label class="field-label" for="sg-components-38-b">С ошибкой</label><input class="field" id="sg-components-38-b" value="+998 90" aria-invalid="true" aria-describedby="sg-components-38-b-err"><p class="field-error" id="sg-components-38-b-err">Укажите номер полностью: для Узбекистана 9 цифр после +998</p></div>
+            <div><label class="field-label" for="sg-components-38-c">Заполнено верно</label><input class="field tabular-nums" id="sg-components-38-c" value="+998 90 123-45-67" data-valid="true"></div>
+            <div><label class="field-label" for="sg-components-38-d">С подсказкой</label><input class="field" id="sg-components-38-d" aria-describedby="sg-components-38-d-h"><p class="field-hint" id="sg-components-38-d-h">Номер Узбекистана или другой страны с кодом</p></div>
+          </div>
+          <div class="mt-5 grid gap-3">
+            <div class="form-status" data-state="ok">Спасибо, Алишер. Заявка отправлена, юрист свяжется с вами в ближайшее время.</div>
+            <div class="form-status" data-state="error">Не удалось отправить заявку: нет связи с сервером. Введённый текст сохранён, попробуйте ещё раз или позвоните +998 (87) 300-10-20.</div>
+            <div class="form-status" data-state="info">Это макет сайта: поля проверяются, но заявка пока никуда не уходит.</div>
+          </div>
+          <h3 class="mt-10 text-[13px] font-medium text-fg-3">Карточки и меню</h3>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <article class="tile relative p-6"><p class="text-[14px] text-fg-3">Практика</p><h4 class="display mt-2 text-[24px] leading-[1.2]"><a class="tile-link" href="#sg">Карточка-ссылка</a></h4><span class="tile-more mt-5">Подробнее<svg class="h-4 w-4" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span></article>
+            <div class="dd-menu relative! top-0! left-0! min-w-0!"><ul><li><a class="dd-opt" href="#sg"><span>Возврат задолженностей</span><span class="dd-note">Главная специализация</span></a></li><li><a class="dd-opt" href="#sg"><span>Уголовная защита</span></a></li></ul><a class="dd-all" href="#sg">Все практики<svg class="h-4 w-4" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a></div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="border-t border-line py-16 lg:py-24" aria-labelledby="icons-title">
+      <div class="container-x">
+        <h2 id="icons-title" class="display text-[32px] leading-[1.1] sm:text-[42px]">Иконки</h2>
+        <p class="mt-3 max-w-[44rem] text-fg-2">Lucide, линия 1,5 px. Знаки WhatsApp, Telegram, App Store и Google Play из Simple Icons.</p>
+        <p class="mt-6 flex flex-wrap gap-5 text-fg-2"><svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /> <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /> <path d="M7 21h10" /> <path d="M12 3v18" /> <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" /> </svg><svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="m14.5 12.5-8 8a2.119 2.119 0 1 1-3-3l8-8" /> <path d="m16 16 6-6" /> <path d="m8 8 6-6" /> <path d="m9 7 8 8" /> <path d="m21 11-8-8" /> </svg><svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <circle cx="9" cy="7" r="4" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" /> </svg><svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M12 12h.01" /> <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" /> <path d="M22 13a18.15 18.15 0 0 1-20 0" /> <rect width="20" height="14" x="2" y="6" rx="2" /> </svg><svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="10" /> <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /> <path d="M2 12h20" /> </svg><svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17" /> <path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" /> <path d="m2 16 6 6" /> <circle cx="16" cy="9" r="2.9" /> <circle cx="6" cy="5" r="3" /> </svg><svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /> <path d="m9 12 2 2 4-4" /> </svg><svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /> <path d="M13 8H7" /> <path d="M17 12H7" /> </svg><svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M14 22v-4a2 2 0 1 0-4 0v4" /> <path d="m18 10 3.447 1.724a1 1 0 0 1 .553.894V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7.382a1 1 0 0 1 .553-.894L6 10" /> <path d="M18 5v17" /> <path d="m4 6 7.106-3.553a2 2 0 0 1 1.788 0L20 6" /> <path d="M6 5v17" /> <circle cx="12" cy="9" r="2" /> </svg><svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /> <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /> <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /> <path d="M10 6h4" /> <path d="M10 10h4" /> <path d="M10 14h4" /> <path d="M10 18h4" /> </svg><svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <polygon points="3 11 22 2 13 21 11 13 3 11" /> </svg><svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /> </svg><svg class="h-6 w-6" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <rect width="20" height="16" x="2" y="4" rx="2" /> <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /> </svg><svg class="h-6 w-6" aria-hidden="true" focusable="false" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><svg class="h-6 w-6" aria-hidden="true" focusable="false" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg><svg class="h-6 w-6" aria-hidden="true" focusable="false" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><svg class="h-6 w-6" aria-hidden="true" focusable="false" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg></p>
+      </div>
+    </section>
+  </main>
+  <!-- Подвал: один на все страницы и языки -->
+  <footer class="site-footer border-t border-line bg-ink-deep">
+    <div class="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8 lg:py-16">
+      <div class="sm:col-span-2 lg:col-span-3">
+        <a href="./" class="brand inline-flex items-center gap-4" aria-label="ICFLP, International Center for Legal Protection, на главную"><img src="media/emblem.webp" alt="" width="240" height="240" class="h-16 w-16" loading="lazy"><span><span class="brand-name block text-[30px]">ICFLP</span><span class="mt-1.5 block text-[12px] leading-[1.35] text-fg-3">International Center<br>for Legal Protection</span></span></a>
+        <p class="mt-4 max-w-[22rem] text-[14px] text-fg-3">Юридическая компания в Ташкенте.</p>
+        <a href="contacts.html#contact" class="btn btn-primary btn-sm mt-6" data-consult aria-haspopup="dialog">Получить консультацию</a>
+      </div>
+      <nav class="lg:col-span-3" aria-label="Практики">
+        <h2 class="foot-h">Практики</h2>
+        <ul class="foot-list">
+          <li><a href="debt-recovery.html">Возврат задолженностей</a></li>
+          <li><a href="citizens-rights.html">Защита прав граждан</a></li>
+          <li><a href="criminal-defense.html">Уголовная защита</a></li>
+          <li><a href="business-law.html">Бизнес и корпоративное право</a></li>
+          <li><a href="international-law.html">Международное право</a></li>
+        </ul>
+      </nav>
+      <div class="grid content-start gap-8 lg:col-span-2">
+        <nav aria-label="Компания">
+          <h2 class="foot-h">Компания</h2>
+          <ul class="foot-list">
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="process.html">Как мы работаем</a></li>
+            <li><a href="maktablaw.html">MaktabLaw</a></li>
+            <li><a href="publications.html">Публикации</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Документы">
+          <h2 class="foot-h">Документы</h2>
+          <ul class="foot-list">
+            <li><a href="privacy.html">Политика конфиденциальности</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sm:col-span-2 lg:col-span-4">
+        <h2 class="foot-h">Контакты</h2>
+        <ul class="foot-list">
+          <li><a class="tabular-nums" href="tel:+998873001020">+998 (87) 300-10-20</a></li>
+          <li><a href="mailto:info@icflp.uz">info@icflp.uz</a></li>
+          <li><address class="not-italic">100016, г. Ташкент, Яшнабадский район, МСГ «Фазогир», ул. Карасув, 13, офис 68</address></li>
+        </ul>
+        <div class="relative mt-5 inline-block" data-dd>
+          <button type="button" class="btn btn-ghost btn-sm" aria-expanded="false" aria-controls="maps-foot" data-dd-btn><svg class="h-4 w-4" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <polygon points="3 11 22 2 13 21 11 13 3 11" /> </svg>Как добраться<svg class="h-4 w-4" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="m6 9 6 6 6-6" /> </svg></button>
+          <ul id="maps-foot" class="dd-menu dd-menu--up" data-dd-menu hidden>
+            <li><a class="dd-opt dd-opt--row" href="https://2gis.uz/tashkent/search/%D0%9A%D0%B0%D1%80%D0%B0%D1%81%D1%83%D0%B2%2C%2013" target="_blank" rel="noopener">2ГИС<svg class="h-4 w-4 text-fg-3" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a></li>
+            <li><a class="dd-opt dd-opt--row" href="https://yandex.uz/maps/?text=%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9A%D0%B0%D1%80%D0%B0%D1%81%D1%83%D0%B2%2C%2013" target="_blank" rel="noopener">Яндекс Карты<svg class="h-4 w-4 text-fg-3" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a></li>
+            <li><a class="dd-opt dd-opt--row" href="https://www.google.com/maps/search/?api=1&query=%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9A%D0%B0%D1%80%D0%B0%D1%81%D1%83%D0%B2%2C%2013" target="_blank" rel="noopener">Google Maps<svg class="h-4 w-4 text-fg-3" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a></li>
+          </ul>
+        </div>
+        <details class="req mt-6 border-t border-line pt-4">
+          <summary class="inline-flex items-center gap-2 text-[14px] font-medium text-fg">Реквизиты<span class="req-chevron inline-flex"><svg class="h-4 w-4 text-fg-3" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="m9 18 6-6-6-6" /> </svg></span></summary>
+          <dl class="mt-4 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-[13px]">
+            <dt class="text-fg-3">Организация</dt><dd class="text-fg-2">ООО «INTERNATIONAL CENTER FOR LEGAL PROTECTION»</dd>
+            <dt class="text-fg-3">Директор</dt><dd class="text-fg-2">Саркисов Левон Сергеевич</dd>
+            <dt class="text-fg-3">ИНН</dt><dd class="tabular-nums text-fg-2">312422418</dd>
+            <dt class="text-fg-3">Банк</dt><dd class="text-fg-2">АКИБ «IPOTEKA BANK», Мирабадский филиал</dd>
+            <dt class="text-fg-3">Р/с</dt><dd class="tabular-nums text-fg-2">2020 8000 9073 1017 6001</dd>
+            <dt class="text-fg-3">МФО</dt><dd class="tabular-nums text-fg-2">00420</dd>
+          </dl>
+        </details>
+      </div>
+    </div>
+    <div class="border-t border-line">
+      <div class="container-x flex flex-col gap-2 py-6 text-[13px] text-fg-3 sm:flex-row sm:justify-between">
+        <p>© 2025-2026 ООО «INTERNATIONAL CENTER FOR LEGAL PROTECTION»</p>
+        <p><a class="transition-colors duration-150 hover:text-fg" href="privacy.html">Политика конфиденциальности</a></p>
+      </div>
+    </div>
+  </footer>
+  <!-- Окно «Получить консультацию» -->
+  <dialog id="consult" class="consult-dialog" aria-labelledby="consult-title">
+    <div class="relative p-6 sm:p-8">
+      <button type="button" class="icon-btn absolute right-3 top-3 h-11 w-11" aria-label="Закрыть" data-consult-close><svg class="h-5 w-5" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M18 6 6 18" /> <path d="m6 6 12 12" /> </svg></button>
+      <h2 id="consult-title" class="display pr-12 text-[30px] leading-[1.15]">Получите консультацию</h2>
+      <p class="mt-2 text-[15px] text-fg-2">Оставьте заявку, и юрист свяжется с вами в ближайшее время.</p>
+      <form class="mt-6" novalidate data-form data-form-source="popup">
+        <div class="grid gap-5">
+          <div>
+            <label class="field-label" for="c-name">Имя</label>
+            <input class="field" id="c-name" name="name" type="text" autocomplete="name" maxlength="80" required aria-describedby="c-name-err">
+            <p class="field-error" id="c-name-err"></p>
+          </div>
+          <div>
+            <label class="field-label" for="c-phone">Телефон</label>
+            <input class="field tabular-nums" id="c-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+998 __ ___-__-__" maxlength="24" required aria-describedby="c-phone-hint c-phone-err">
+            <p class="field-hint" id="c-phone-hint">Номер Узбекистана или другой страны с кодом</p>
+            <p class="field-error" id="c-phone-err"></p>
+          </div>
+          <div>
+            <label class="field-label" for="c-msg">Кратко о ситуации <span class="font-normal text-fg-3">(необязательно)</span></label>
+            <textarea class="field min-h-[96px] resize-y" id="c-msg" name="message" rows="3" maxlength="2000"></textarea>
+          </div>
+          <!-- защита от спама: поле не видно людям, боты его заполняют -->
+          <div class="hp" aria-hidden="true">
+            <label for="c-company">Компания</label>
+            <input id="c-company" name="company" type="text" tabindex="-1" autocomplete="off">
+          </div>
+        </div>
+        <button class="btn btn-primary mt-7 w-full" type="submit" data-submit>
+          <span data-submit-label>Отправить заявку</span><svg class="" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg>
+        </button>
+        <p class="mt-4 text-[13px] leading-[1.5] text-fg-3">Нажимая кнопку, вы соглашаетесь с <a class="link-underline" href="privacy.html">политикой конфиденциальности</a>.</p>
+        <div class="form-status mt-5" role="status" aria-live="polite" data-form-status hidden></div>
+      </form>
+      <p class="mt-6 border-t border-line pt-5 text-[14px] text-fg-2">Или позвоните: <a class="tabular-nums text-fg underline decoration-brass/50 underline-offset-4 transition-colors duration-150 hover:text-brass-hi" href="tel:+998873001020">+998 (87) 300-10-20</a></p>
+    </div>
+  </dialog>
+  <script>window.ICFLP_FORM_ENDPOINT = "";</script>
+  <script src="js/site.js?v=84110e99" defer></script>
+</body>
+</html>

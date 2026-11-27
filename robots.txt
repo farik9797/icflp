@@ -1,0 +1,7 @@
+# Превью: страницы закрыты meta noindex. На боевом домене PREVIEW = false в build.mjs.
+User-agent: *
+Allow: /
+Disallow: /styleguide.html
+Disallow: /404.html
+
+Sitemap: https://farik9797.github.io/icflp/sitemap.xml
